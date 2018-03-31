@@ -1,0 +1,13 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "a simple but modern desktop weather app",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron .",
+    "start": "electron ."
+  },
+  "author": "deep5050",
+  "license": "MIT",
+  "repository": "http://github.com/deep5050"
+}
