@@ -1,5 +1,5 @@
 var req = new XMLHttpRequest;
-// req.timeout = 7000;
+
 // dummy  open weather map api data object when no internet connection available
 var got_data = 0;
 // var fetched_data;
@@ -62,19 +62,6 @@ function showTime() {
 }
 
 
-
-// function startTime() {
-//   var today = new Date();
-//   var h = today.getHours();
-//   var m = today.getMinutes();
-//   var s = today.getSeconds();
-//   m = checkTime(m);
-//   s = checkTime(s);
-//   document.getElementById('txt').innerHTML =
-//     h + ":" + m + ":" + s;
-//   var t = setTimeout(startTime, 500);
-// }
-
 function checkTime(i) {
   if (i < 10) {
     i = "0" + i
@@ -91,19 +78,21 @@ setInterval(function () {
   m = checkTime(m);
   s = checkTime(s);
 
-  if (h >= 12 && h <= 23 && m <= 59) {
-    MyFormat = (h - 12) + ':' + m + ':' + s + ' PM';
+  // if (h >= 12 && h <= 23 && m <= 59) {
+  //   MyFormat = (h - 12) + ':' + m + ':' + s + ' PM';
+  // } else if (h >= 0 && h <= 11 && m <= 59) {
+  //   if (h == 0) { h = h + 12 }
+  //   MyFormat = h + ':' + m + ':' + s + ' AM';
+  // }
+
+
+    if (h >= 12 && h <= 23 && m <= 59) {
+    MyFormat = (h - 12) + ':' + m + ' PM';
   } else if (h >= 0 && h <= 11 && m <= 59) {
     if (h == 0) { h = h + 12 }
-    MyFormat = h + ':' + m + ':' + s + ' AM';
+    MyFormat = h + ':' + m + ' AM';
   }
   document.getElementById("time").innerHTML = MyFormat;
-
-
-
-  // document.getElementById("time").innerHTML =
-  //   h + ":" + m + ":" + s;
-  // var t = setTimeout(startTime, 500);
 }, 1000);
 
 
@@ -118,19 +107,25 @@ function kelvin_cel(k) {
 }
 ///////////////////////////////////////////////
 function error_occured() {
-  // document.getElementById("myImg").src = "hackanm.gif";
+
   document.getElementById("main-icon").src = "./resources/extra/error.png";
   document.getElementById("temp-val").style.fontSize = "x-large";
-  document.getElementById("temp-val").style.color = "#E82427";
+  document.getElementById("temp-val").style.color = "white";
   document.getElementById("temp-val").innerHTML = "Something Went wrong";
 }
 
-function updating() {
+function notfound()
+{
+  document.getElementById('main-icon').src = "./resources/extra/not_found.png";
+  document.getElementById('temp-val').style.color = "white";
+  document.getElementById('temp-val').innerHTML = " CITY NOT FOUND";
+}
 
-  document.getElementById("main-icon").src = "./resources/extra/91.gif";
-  document.getElementById("temp-val").style.fontSize = "40px";
+function updating() {
+  document.getElementById("main-icon").src = "./resources/extra/91.png";
+  document.getElementById("temp-val").style.fontSize = "30px";
   document.getElementById("temp-val").style.color = "white";
-  document.getElementById("temp-val").innerHTML = "Loading..";
+  document.getElementById("temp-val").innerHTML = "LOADING..";
   document.getElementById("city").innerHTML = "";
 
 }
@@ -139,6 +134,7 @@ function updating() {
 function update_success_content() {
   console.log(fetched_data);
   // update all the things..
+
   document.getElementById("main-icon").src = "./resources/contrast.png";
 
   document.getElementById("temp-val").style.color = "white";
@@ -148,7 +144,7 @@ function update_success_content() {
   console.log(celsius_temp);
   document.getElementById("city").innerHTML = fetched_data.name;
   console.log(fetched_data.name);
-  var wind_data ='SPEED: '+ fetched_data.wind.speed + '</br>' +'DEG: ' +fetched_data.wind.deg;
+  var wind_data ='SPEED: '+ fetched_data.wind.speed + '</br>' +'DEG: ' +Math.round(fetched_data.wind.deg);
   document.getElementById("show-wind").innerHTML = wind_data;
   var max_temp_cel = Math.round();
   var max_min = 'MAX: ' + Math.round(kelvin_cel(fetched_data.main.temp_max)) + '</br>' + 'MIN: ' + Math.round( kelvin_cel( fetched_data.main.temp_min));
@@ -156,50 +152,30 @@ function update_success_content() {
   document.getElementById("show-humidity").innerHTML = 'HUM: '+fetched_data.main.humidity+'</br>'+'CLOUD: '+ fetched_data.clouds.all;
 }
 
-// global request variable
-
 
 
 function test_connection() {
   console.log("test con invoked");
   console.log(req.status + ':' + req.readyState);
-  // req.ontimeout = function () { alert("canot connect to the server") };
-
-
-
-
-
-
-
-
-
-  // req.onprogress = function () {
-  //   updating();
-  // };
-
-  // req.ontimeout = function () {
-  //   alert("timeout");
-  //   error_occured();
-  // return;
 };
 
-
-
-if (req.status = 404) {
-  // error_occured();
-  // alert("oops !something went wrong !");
-}
 
 req.onreadystatechange = function () {
   if (req.readyState == 4 && req.status == 200) {
     fetched_data = JSON.parse(req.responseText);
     if (fetched_data.cod == 200) {
       update_success_content();
-    } else if (fetched_data.cod == 404) {
-      console.log("city not found");
+    } //
+  }
+  else if(req.status ==0 && req.readyState == 4){
+    console.log("no internet! ");
+    error_occured();
+  }
+  else if (req.status == 404 && req.readyState == 4) {
+    console.log("city not found");
+    notfound();
 
-    }
-  } else {
+  }else {
 
     console.log(req.status + ':' + req.readyState);
   }
@@ -208,31 +184,14 @@ req.onreadystatechange = function () {
 };
 
 
-
-
-
-
-// xhttp.onreadystatechange = function () {
-//   if (this.readyState == 4 && this.status == 200) {
-//     document.getElementById("demo").innerHTML = this.responseText;
-//   }
-// };
-// xhttp.open("GET", "ajax_info.txt", true);
-// xhttp.send(); 
-// }
-
-
 function get_data() {
-
-
   req.timeout = 5000;
   console.log("text con return");
-  req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=kolkata,in&appid=48ff1d472cdeee40ccb395bc03863b73", true);
+  req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=kolkata&appid=48ff1d472cdeee40ccb395bc03863b73&type=like", true);
   console.log("open cmplt");
   req.send();
   req.addEventListener("timeout", function (e) {
     req.abort();
-    // alert("timeout");
     console.log("timeout");
     error_occured();
     return;
@@ -242,20 +201,8 @@ function get_data() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 // update whole app interface
 function updateApp() {
-  // showTime();
   updating();
   get_data();
 }

@@ -3,57 +3,45 @@
 
 <head>
     <meta charset="UTF-8">
+
     <title>WEATHER</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
-    <!-- <script src="./main.js"></script> -->
+
     <script src="./main-ui.js"></script>
+    <script src="./main.js"></script>
     <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> -->
 </head>
 
 <body id="body" onload="updateApp()">
-    <div class="my-card">
 
+    <div class="my-card">
         <div class="container-fluid">
             <div class="row">
-
             </div>
+
             <div class="row">
 
             </div>
             <div class="row mt-1">
-                <div class="col-2 btn" onclick="closeButton(this) " id="close-btn">
-
-
-                    <img id="close-btn" style="-webkit-app-region: no-drag;" onclick="closeButton(this)" src="./resources/close.png" alt="close">
-
-
+                <div class="col-2 btn" id="close-btn">
+                    <img id="close-btn" style="-webkit-app-region: no-drag;" src="./resources/close.png" alt="close" onclick="close_main_ui()">
                 </div>
+
                 <div class="col-8 text-center time" id="time"></div>
-                <!--
-                <div class="col-2"></div>
-                <div class="col-2"></div>
-                <div class="col-2"></div>
--->
                 <div class="col-2 btn ">
-                    <img style="-webkit-app-region: no-drag;" src="./resources/setting.png" alt="settings">
+                    <img style="-webkit-app-region: no-drag;" src="./resources/setting.png" alt="settings" onclick="openSettings()">
                 </div>
             </div>
         </div>
-        <!--
-       <span class="setting-icon">
-           <img src="./setting.png" alt="">
-       </span>
--->
+
 
 
         <div class="ineer-container text-center ">
-            <div class="main-logo">
+            <div class="main-logo" id="main-div">
                 <img id="main-icon" src="" alt="today">
             </div>
-            <!-- <div class="city-info">
-                <h1 class="city-name txt-center">kolkata</h1>
-            </div> -->
+
             <div class="cotainer-fluid">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -85,17 +73,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
-
-
-
-
-
-
 
 
     <div class="my-card-bottom">
@@ -112,7 +90,7 @@
                 <div class="col-4 mycol" id="wind">
                     <div class="card-style">
 
-                        <img src="./resources/air3.png" alt="">
+                        <img src="./resources/air3.png" alt="" id="img-wind">
                     </div>
                 </div>
                 <div class="col-4 mycol" id="temp">
@@ -149,27 +127,10 @@
                             UNKNOWN
                         </p>
                     </div>
-
-
-                    <!-- <div class="container-fluid">
-<div class="row">
-    <div class="btn btn-primary"  >
-        <p>OK</p>
-    </div>
-</div>
-                    </div> -->
-
-
-
-
-
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </body>
 
 </html>

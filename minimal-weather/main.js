@@ -1,4 +1,5 @@
 const electron = require('electron')
+// const ipc = require('electron').ipc;
 
 // Module to control application life.
 
@@ -20,18 +21,25 @@ const url = require('url')
 
 // be closed automatically when the JavaScript object is garbage collected.
 
-let mainWindow
-let Tray = null
+var mainWindow;
+let Tray = null;
 
 
 
-function createWindow () {
+function createWindow() {
 
   // Create the browser window.
 
-  mainWindow = new BrowserWindow({ width: 360, height: 640,frame: false, resizable: false, icon: __dirname + '/app_icon.ico' })
-
-//mainWindow.setMenu(null);
+  mainWindow = new BrowserWindow({
+    width: 360,
+    height: 640,
+    frame: false,
+    resizable: false,
+    icon: __dirname + '/app_icon.ico'
+  })
+// uncomment this at the time of package building
+  
+  // mainWindow.setMenu(null);
 
   // and load the index.html of the app.
 
@@ -44,14 +52,6 @@ function createWindow () {
     slashes: true
 
   }))
-
-
-
-  // Open the DevTools.
-
-  //mainWindow.webContents.openDevTools()
-
-
 
   // Emitted when the window is closed.
 
@@ -77,7 +77,56 @@ function createWindow () {
 
 // Some APIs can only be used after this event occurs.
 
-app.on('ready', createWindow)
+
+function openSettings() {
+  settingWindow.show()
+  // console.log("open sttings");
+  // var settingWindow = new BrowserWindow({
+  //   width: 370,
+  //   height: 600,
+  //   frame: true,
+  //   resizable: true,
+  //   icon: __dirname + '/app_icon.ico'
+  // });
+
+  // settingWindow.loadURL(url.format({
+
+  //   pathname: path.join(__dirname, 'index.html'),
+
+  //   protocol: 'file:',
+
+  //   slashes: true
+
+  // }));
+  // settingWindow.webContents.openDevTools();
+}
+
+
+app.on('ready', function () {
+  createWindow();
+  console.log("open sttings");
+  var settingWindow = new BrowserWindow({
+    width: 370,
+    height: 600,
+    frame: true,
+    show: true,
+    resizable: true,
+    icon: __dirname + '/app_icon.ico'
+  });
+
+  settingWindow.loadURL(url.format({
+
+    pathname: path.join(__dirname, 'index.html'),
+
+    protocol: 'file:',
+
+    slashes: true
+
+  }));
+  settingWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
+
+})
 
 
 // app.on('ready', () => {
@@ -115,10 +164,6 @@ app.on('window-all-closed', function () {
 
 
 
-
-
-
-
 // document.onreadystatechange = function () {
 //   if (document.readyState == "complete") {
 //     init();
@@ -141,12 +186,12 @@ app.on('activate', function () {
 
 
 
-function closeButton(x) {
+// function closeButton(x) {
 
-  // const window = remote.getCurrentWindow();
-  // window.close();
-  app.quit();
-}
+//   // const window = remote.getCurrentWindow();
+//   // window.close();
+//   app.quit();
+// }
 
 
 
