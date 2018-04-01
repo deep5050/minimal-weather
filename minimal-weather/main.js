@@ -34,7 +34,7 @@ function createWindow() {
     width: 360,
     height: 640,
     frame: false,
-    resizable: false,
+    resizable: true,
     icon: __dirname + '/app_icon.ico'
   })
 // uncomment this at the time of package building
@@ -124,7 +124,7 @@ app.on('ready', function () {
 
   }));
   settingWindow.webContents.openDevTools();
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
 })
 

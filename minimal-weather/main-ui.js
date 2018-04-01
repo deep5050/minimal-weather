@@ -1,3 +1,5 @@
+// import { isDate } from "util";
+
 var req = new XMLHttpRequest;
 
 // dummy  open weather map api data object when no internet connection available
@@ -48,6 +50,7 @@ var fetched_data = {
 
 
 // ///////////////////////////////////////////
+var is_day;
 function showTime() {
   var currdate = new Date();
   var MyFormat = currdate.getHours() + ':' + currdate.getMinutes();
@@ -57,6 +60,10 @@ function showTime() {
     MyFormat = currdate.getHours() + ':' + currdate.getMinutes() + ' PM';
   } else {
     MyFormat = currdate.getHours() + ':' + currdate.getMinutes() + ' AM';
+  }
+  
+  if (currdate.getHours() >= 18) {
+    is_day = 0; // if it is greater than or equals to 6pm it is night (atleast to me) :)
   }
   document.getElementById("time").innerHTML = MyFormat;
 }
@@ -130,13 +137,40 @@ function updating() {
 
 }
 
-
+var logo_id;
 function update_success_content() {
   console.log(fetched_data);
   // update all the things..
+  var weather_id = fetched_data.weather[0].id;
+  var weather_des = fetched_data.weather[0].main;
+  console.log("id:" + weather_id);
+  console.log("main:" + weather_des);
 
-  document.getElementById("main-icon").src = "./resources/contrast.png";
+  if (weather_id >= 200 && weather_id < 300)
+  {
+    logo_id = 200;
+  } else if (weather_id >= 500 && weather_id < 600) {
+    logo_id = 500;  
+  } else if (weather_id >= 600 && weather_id < 700) {
+    logo_id = 600;  
+  } else if (weather_id >= 700 && weather_id < 800) {
+    logo_id = 700;  
+  } else if (weather_id >= 800 && weather_id < 900) {
+    logo_id = 800;  
+  } else if (weather_id >= 900 && weather_id < 952) {
+    logo_id = 900;  
+  } else {
+    logo_id = 0;  
+}
 
+
+
+
+
+
+
+  document.getElementById("main-icon").src = "./resources/conditions/"+logo_id+'.svg';
+// 
   document.getElementById("temp-val").style.color = "white";
   document.getElementById("temp-val").style.fontSize = "55px";
   var celsius_temp = kelvin_cel(fetched_data.main.temp);
@@ -187,7 +221,7 @@ req.onreadystatechange = function () {
 function get_data() {
   req.timeout = 5000;
   console.log("text con return");
-  req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=kolkata&appid=48ff1d472cdeee40ccb395bc03863b73&type=like", true);
+  req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=egra&appid=48ff1d472cdeee40ccb395bc03863b73&type=like", true);
   console.log("open cmplt");
   req.send();
   req.addEventListener("timeout", function (e) {
