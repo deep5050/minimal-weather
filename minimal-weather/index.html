@@ -1,22 +1,6 @@
 <!doctype html>
 <html lang="en">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -24,9 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style2.css">
-    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/bootstrap/js/jquery-2.1.1.min.js"></script>
 
+    <script type="text/javascript" src="./index.js"></script>
+
+<script src="./main.js"></script>
 
     <title>weather</title>
     <style>
@@ -44,7 +29,7 @@
     </style>
 </head>
 
-<body>
+<body onload="runscript()">
     <div class="container">
         <form>
             <div class="form-group mt-3">
@@ -107,9 +92,9 @@
             </div>
             <div class="card-body">
 
-                <p class="card-text">This app uses weather.com API to get weather Info.</p>
+                <p class="card-text">This app uses openweather API to get weather Info.</p>
                 <p>To view additional info and to set your location click the button below.</p>
-                <a href="http://weather.com" class="btn btn-primary bg-peimary">open weather.com in browser</a>
+                <a href="" class="btn btn-primary bg-primary" id="open-weather">openweathermap.org in browser</a>
             </div>
         </div>
     </div>
@@ -117,8 +102,8 @@
     <div class="containter-fluid mt-2">
         <div class="col-12 ml-3">
             <!-- <img src="/resources/icons8_GitHub.svg" alt="Github"> -->
-            <div class="container ml-4">
-                <a href="#" class="btn btn-primary bg-info github">Fork Me on Github</a>
+            <div class="container ml-4 id="fork-me" >
+                <a href="#" class="btn btn-primary bg-info github" id="fork-me" name="fork-me" >Fork Me on Github</a>
             </div>
 
             <!-- <button type="button" class="btn btn-outline ml-5 style="text-align: center;">    -->
