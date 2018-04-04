@@ -221,7 +221,7 @@ req.onreadystatechange = function () {
 function get_data() {
   req.timeout = 5000;
   console.log("text con return");
-  req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=egra&appid=48ff1d472cdeee40ccb395bc03863b73&type=like", true);
+  req.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=kolkata&appid=48ff1d472cdeee40ccb395bc03863b73&type=like", true);
   console.log("open cmplt");
   req.send();
   req.addEventListener("timeout", function (e) {
