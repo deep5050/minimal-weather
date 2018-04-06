@@ -1,5 +1,7 @@
 const shell = require('electron').shell;
-
+const remote = require('electron').remote;
+const app = require('electron').remote.app;
+const ipcRenderer = require('electron').ipcRenderer;
 
 
 function runscript(x) {
@@ -11,5 +13,7 @@ function runscript(x) {
   fork_me.addEventListener('click', () => {
     shell.openExternal('http://github.com/deep5050/minimal-weather');
   });
+
+
 
 }

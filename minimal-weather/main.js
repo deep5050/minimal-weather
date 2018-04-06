@@ -2,6 +2,8 @@ const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 let mainWindow, settingWindow;
+
+const { ipcMain } = require('electron').ipcMain;
 const path = require('path')
 const url = require('url')
 let Tray = null;
@@ -26,22 +28,22 @@ function createWindow() {
 
 
 
-  settingWindow = new BrowserWindow({
-    width: 370,
-    height: 600,
-    frame: true,
-    resizable: true,
-    show: false,
-    icon: __dirname + '/app_icon.ico'
-  });
+  // settingWindow = new BrowserWindow({
+  //   width: 370,
+  //   height: 600,
+  //   frame: true,
+  //   resizable: true,
+  //   show: false,
+  //   icon: __dirname + '/app_icon.ico'
+  // });
 
-  settingWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+  // settingWindow.loadURL(url.format({
+  //   pathname: path.join(__dirname, 'index.html'),
+  //   protocol: 'file:',
+  //   slashes: true
+  // }));
 
-  settingWindow.webContents.openDevTools();
+  // settingWindow.webContents.openDevTools();
 
 
 
@@ -94,9 +96,9 @@ app.on('activate', function () {
 
 
 
-function closeButton(x) {
-  app.quit();
-}
+// function closeButton(x) {
+//   app.quit();
+// }
 
 
 

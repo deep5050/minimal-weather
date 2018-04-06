@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style2.css">
+
+    <script type="text/javascript" src="./app/renderer/settings.js"></script>
+
+<!-- <script src="./main.js"></script> -->
+
+    <title>weather</title>
+    <style>
+        html,
+        body {
+            width: auto;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+
+
+        }
+    </style>
+</head>
+
+<body onload="runscript()">
+    <div class="container">
+        <form>
+            <div class="form-group mt-3">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Paste your City code here">
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <label for="formGroupExampleInput2">OR</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your city name here">
+                    </div>
+                </form>
+<!--
+                <div class="container-fluid mt-2 ml-5">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            C / F
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="http://xvideos.com">Celsius</a>
+                            <a class="dropdown-item" href="#">Fahrenheit</a>
+                        </div>
+                    </div>
+-->
+<!--
+
+                     <div class="radio">
+    <label>
+        <input type="radio" name="optradio">  Celsius</label>
+</div>
+<div class="radio">
+    <label>
+        <input type="radio" name="optradio">  Fahrenheit</label>
+</div> 
+  </div>
+-->
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 ml-5 ">
+                <div class="btn btn-success submit">
+                    SUBMIT
+                </div>
+            </div>
+
+    
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card text-center mt-2">
+            <div class="card-header bg-info">
+                NOTE
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">This app uses openweather API to get weather Info.</p>
+                <p>To view additional info and to set your location click the button below.</p>
+                <a href="" class="btn btn-primary bg-primary" id="open-weather">openweathermap.org in browser</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="containter-fluid mt-2">
+        <div class="col-12 ml-3">
+            <!-- <img src="/resources/icons8_GitHub.svg" alt="Github"> -->
+            <div class="container ml-4 id="fork-me" >
+                <a href="#" class="btn btn-primary bg-info github" id="fork-me" name="fork-me" >Fork Me on Github</a>
+            </div>
+
+            <!-- <button type="button" class="btn btn-outline ml-5 style="text-align: center;">    -->
+            <!-- <a href="http://github.com/deep5050" >Fork me on Github</a></button> -->
+        </div>
+    </div>
+
+
+</body>
+
+</html>
