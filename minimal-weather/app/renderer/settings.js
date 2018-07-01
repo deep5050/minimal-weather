@@ -1,19 +1,28 @@
+
+const { remote, ipcRenderer } = require('electron');
 const shell = require('electron').shell;
-const remote = require('electron').remote;
 const app = require('electron').remote.app;
-const ipcRenderer = require('electron').ipcRenderer;
+// const ipcRenderer = require('electron').ipcRenderer;
+const BrowserWindow = require('electron').remote.BrowserWindow;
+const path = require('path');
+const url = require('url');
+var submit;
+var city_name;
 
+function runscript() {
+  submit = document.getElementById("submit");
+  var city_id = document.getElementById("city_code");
+   city_name = document.getElementById("city_name");
 
-function runscript(x) {
-  var open_weather = document.getElementById('open-weather');
-  open_weather.addEventListener('click', () => {
-    shell.openExternal('https://openweathermap.org/city');
-  });
-  var fork_me = document.getElementById('fork-me');
-  fork_me.addEventListener('click', () => {
-    shell.openExternal('http://github.com/deep5050/minimal-weather');
-  });
-
-
+  submit.addEventListener('click', () => { 
+  
+    let mainWindow = remote.getGlobal ('mainWindow');
+    var city_val = city_name.value;
+    if (mainWindow) {
+      mainWindow.webContents.send('city_name', 'city_val');
+      console.log('sent');
+    }
+    console.log(city_val);
+  })
 
 }

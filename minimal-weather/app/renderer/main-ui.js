@@ -1,16 +1,26 @@
-
+const { remote, ipcRenderer } = require('electron');
 var req = new XMLHttpRequest;
 const shell = require('electron').shell;
-const remote = require('electron').remote;
+// const remote = require('electron').remote;
 const app = require('electron').remote.app;
-const ipcRenderer = require('electron').ipcRenderer;
+
 const BrowserWindow = require('electron').remote.BrowserWindow;
 const path = require('path');
 const url = require('url');
 var user_city = "kolkata";
 var api_key = "48ff1d472cdeee40ccb395bc03863b73";
+var settingsWindowVisible = 0;
+let settingsWindow;
 
-// dummy  open weather map api data object when no internet connection available
+
+
+
+
+
+
+
+
+// default  open weather map api data object when no internet connection available
 var got_data = 0;
 // var fetched_data;
 var fetched_data = {
@@ -180,7 +190,7 @@ function update_success_content() {
   var celsius_temp = kelvin_cel(fetched_data.main.temp);
   document.getElementById("temp-val").innerHTML = celsius_temp + '&#8451;';
   console.log(celsius_temp);
-  document.getElementById("city").innerHTML = fetched_data.name;
+  document.getElementById("city").innerHTML = fetched_data.name.toLocaleUpperCase();
   console.log(fetched_data.name);
   var wind_data ='SPEED: '+ fetched_data.wind.speed + '</br>' +'DEG: ' +Math.round(fetched_data.wind.deg);
   document.getElementById("show-wind").innerHTML = wind_data;
@@ -238,34 +248,49 @@ function get_data() {
   console.log("send cmplt");
 
 }
-
+ipcRenderer.on('set_city_name', function (event, arg) {
+  alert("got in main-ui");
+})
 // update whole app interface
 function updateApp() {
+  
   updating();
   get_data();
+ 
   document.getElementById('close-btn').addEventListener('click', e => {
     remote.getCurrentWindow().close();
     remote.getFocusedWindow().close();
   });
 
-  document.getElementById('settings').addEventListener('click', e => {
-    
-    var settingsWindow = new BrowserWindow({ height: 570, width: 370 });
-    settingsWindow.loadURL(url.format({
-      pathname: path.join(__dirname, 'settings.html'),
-      protocol: 'file:',
-      slashes: true,
-      show: false
+
+
+
+  function openSettingsWindow() {
+        var settingsWindow = new BrowserWindow({
+          height: 580,
+          width: 380
+        });
+        settingsWindow.loadURL(url.format({
+          pathname: path.join(__dirname, 'settings.html'),
+          protocol: 'file:',
+          slashes: true,
+          show: true
     }));
-    settingsWindow.once('ready-to-show', () => {
-      settingsWindow.show();
-    })
+    settingsWindow.webContents.openDevTools();
+      settingsWindow.on('close', () => {
+        settingsWindowVisible = 0;
+      })
+  }
 
+    
+  document.getElementById('settings').addEventListener('click', () => {
+    if (settingsWindowVisible == 0 ){
+      settingsWindowVisible = 1;
+      openSettingsWindow();
+      
+    }
   });
-
-
-
-
-
-
 }
+
+ipcRenderer.on('city_name', (event, message) => { console.log(message); });
+

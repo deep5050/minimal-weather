@@ -61,6 +61,33 @@ img:hover {
     overflow: hidden;
 
 }
+#close-btn{
+    border-radius: 20px;
+    animation-delay: 100ms;
+    animation-duration: 500ms;
+
+}
+#close-btn:hover{
+     animation-delay: 100ms;
+     animation-duration: 500ms;
+    box-shadow: 0px 0px 20px white;
+    transform: rotate(90deg);
+}
+#reset{
+    border-radius: 20px;
+}
+#reset:hover{
+    transform: rotate(90deg);
+    box-shadow: 0px 0px 20px  white;
+}
+#settings-btn{
+    border-color: transparent;
+    border-radius: 20px;
+}
+#settings-btn:hover{
+    box-shadow: 0px 0px 20px yellow;
+    transform: rotate(40eg);
+}
 .city-name
 {
 /*    font-family: 'Times New Roman', Times, serif;*/

@@ -1,13 +1,22 @@
 const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
-let mainWindow, settingWindow;
+var mainWindow;
 
-const { ipcMain } = require('electron').ipcMain;
+const { ipcMain } = require('electron');
 const path = require('path')
 const url = require('url')
 let Tray = null;
+const { webContents } = require('electron')
+// console.log(webContents)
+// ipcMain.on('city_name', (event, arg) => { console.log(arg); });
 
+
+// ipcMain.on('set_city_name', (event, arg) => {
+//   console.log("got somtehing from any renderer");
+//   console.log(arg);
+//   event.sender.send('reply', 'got it');
+// });
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -26,82 +35,30 @@ function createWindow() {
   }));
 
 
-
-
-  // settingWindow = new BrowserWindow({
-  //   width: 370,
-  //   height: 600,
-  //   frame: true,
-  //   resizable: true,
-  //   show: false,
-  //   icon: __dirname + '/app_icon.ico'
-  // });
-
-  // settingWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, 'index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }));
-
-  // settingWindow.webContents.openDevTools();
-
-
+  //mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', function () {
-    mainWindow = null
+    app.quit();
   });
-}
-
-function openSettings() {
-  settingWindow.show();
-
 }
 
 
 app.on('ready', function () {
   createWindow();
-
 });
 
 
-
 app.on('window-all-closed', function () {
-
-  // On OS X it is common for applications and their menu bar
-
-  // to stay active until the user quits explicitly with Cmd + Q
-
   if (process.platform !== 'darwin') {
-
     app.quit()
-
   }
+});
 
-})
-
-
-
-// document.onreadystatechange = function () {
-//   if (document.readyState == "complete") {
-//     init();
-//   }
-// };
 
 app.on('activate', function () {
 
   if (mainWindow === null) {
     createWindow();
   }
+
 });
-
-
-
-// function closeButton(x) {
-//   app.quit();
-// }
-
-
-
-// In this file you can include the rest of your app's specific main process
-
-// code. You can also put them in separate files and require them here.
