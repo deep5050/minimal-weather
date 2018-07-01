@@ -7,9 +7,10 @@
     <title>WEATHER</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/animation.css">
 
-    <script src="./main-ui.js"></script>
-    <script src="./main.js"></script>
+    <script src="./app/renderer/main-ui.js"></script>
+    <!-- <script src="./main.js"></script> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> -->
 </head>
 
@@ -24,13 +25,13 @@
 
             </div>
             <div class="row mt-1">
-                <div class="col-2 btn" id="close-btn">
+                <div class="col-2 btn" id="close-btn-div">
                     <img id="close-btn" style="-webkit-app-region: no-drag;" src="./resources/close.png" alt="close" onclick="close_main_ui()">
                 </div>
 
                 <div class="col-8 text-center time" id="time"></div>
                 <div class="col-2 btn ">
-                    <img style="-webkit-app-region: no-drag;" src="./resources/setting.png" alt="settings" onclick="openSettings()">
+                    <img style="-webkit-app-region: no-drag;" src="./resources/setting.png" id="settings-btn">
                 </div>
             </div>
         </div>
@@ -39,7 +40,7 @@
 
         <div class="ineer-container text-center ">
             <div class="main-logo" id="main-div">
-                <img id="main-icon" src="" alt="today">
+                <img id="main-icon" src="" alt="today" class="animated flip">
             </div>
 
             <div class="cotainer-fluid">
@@ -55,7 +56,7 @@
         </div>
         <div class="temp-info">
             <div class="city-info">
-                <h1 class="city-name txt-center text-capitalize text-nowrap" id="city"></h1>
+<h1 class="city-name txt-center text-capitalize text-nowrap animated bounce" id="city"></h1>
             </div>
         </div>
 
@@ -65,7 +66,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="btn-update">
-                        <div class="btn" id="reset" onclick="updateApp()">
+                        <div class="btn animated flip" onclick="updateApp()">
                             <img id="reset" src="./resources/reset.png" alt="">
                         </div>
 
@@ -80,7 +81,7 @@
         <div class="row bg-dark">
             <div class="others ">&nbsp;&nbsp; WIND</div>
 
-            <div class="others">TEMPERATURE</div>
+            <div class="others ">TEMPERATURE</div>
             <div class="others" id="hum-text">OTHERS</div>
         </div>
 
@@ -116,14 +117,14 @@
                 </div>
                 <div class="col-4">
                     <div class="max-min text-center">
-                        <p id="show-max-min">
+<p id="show-max-min " class="animated flash">
                             MAX: N/A</br>MIN: N/A
                         </p>
                     </div>
                 </div>
                 <div class="col-4 ">
                     <div class="max-min text-center">
-                        <p id="show-humidity">
+<p id="show-humidity" class="animated flash">
                             UNKNOWN
                         </p>
                     </div>
