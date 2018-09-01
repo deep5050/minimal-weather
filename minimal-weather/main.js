@@ -1,35 +1,29 @@
-const { electron, app, BrowserWindow } = require('electron');
-const { webContents } = require('electron');
+const electron = require('electron')
+const app = electron.app
+const BrowserWindow = electron.BrowserWindow
+var mainWindow;
+
 const { ipcMain } = require('electron');
-const fs = require('fs');
-const path = require('path');
-const url = require('url');
-const ipc = require('electron').ipcMain;
-let mainWindow;
+const path = require('path')
+const url = require('url')
 let Tray = null;
+const { webContents } = require('electron')
+// console.log(webContents)
+// ipcMain.on('city_name', (event, arg) => { console.log(arg); });
 
 
+// ipcMain.on('set_city_name', (event, arg) => {
+//   console.log("got somtehing from any renderer");
+//   console.log(arg);
+//   event.sender.send('reply', 'got it');
+// });
 
-ipc.on('update_settings', function (event, settingsObj) {
-  console.log(settingsObj);
-  // update the settings.json file..
-  // let dataToWrite = {
-  //   "api_key": settingsObj.api_key,
-  //   "city_name": settingsObj.city_name
-  // };
-  let dat = JSON.stringify(settingsObj);
-  console.log(dat);
-  fs.writeFileSync('./settings.json', dat);
-  mainWindow.webContents.send('update_settings', settingsObj);
-
-})
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 350,
-    height: 600,
+    width: 360,
+    height: 640,
     frame: false,
     resizable: false,
-    fullscreen :false,
     icon: __dirname + '/app_icon.ico',
     title: "weather"
   });
@@ -56,8 +50,7 @@ app.on('ready', function () {
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
-    app.quit();
-    mainWindow = null;
+    app.quit()
   }
 });
 
