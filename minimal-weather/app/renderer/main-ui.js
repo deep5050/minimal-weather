@@ -1,18 +1,23 @@
 const { remote, ipcRenderer } = require('electron');
+const fs = require('fs');
 var req = new XMLHttpRequest;
 const shell = require('electron').shell;
+const ipc = require('electron').ipcRenderer
 // const remote = require('electron').remote;
 const app = require('electron').remote.app;
 
 const BrowserWindow = require('electron').remote.BrowserWindow;
 const path = require('path');
 const url = require('url');
-var user_city = "kolkata";
-var api_key = "48ff1d472cdeee40ccb395bc03863b73";
+
 var settingsWindowVisible = 0;
 let settingsWindow;
+var user_city = "";
+var api_key = "";
+ipc.on('update_city', function (event, data) {
 
-
+  updateApp();
+});
 
 
 
@@ -232,10 +237,10 @@ req.onreadystatechange = function () {
 };
 
 
-function get_data() {
+function get_data(jsonData){
   req.timeout = 5000;
  
-  var user_req = "http://api.openweathermap.org/data/2.5/weather?q=" + user_city + "&appid=" + api_key + "&type=like";
+  var user_req = "http://api.openweathermap.org/data/2.5/weather?q=" + jsonData.city_name + "&appid=" + jsonData.api_key + "&type=like";
   req.open("GET", user_req, true);
   console.log("open cmplt");
   req.send();
@@ -248,14 +253,20 @@ function get_data() {
   console.log("send cmplt");
 
 }
-ipcRenderer.on('set_city_name', function (event, arg) {
-  alert("got in main-ui");
-})
+
 // update whole app interface
 function updateApp() {
+
+  let settingData = fs.readFileSync('settings.json');
+  let jsonData = JSON.parse(settingData);
+
+  // read settings.json file here....
+  var user_city = jsonData.user_city;
+  var api_key = jsonData.api_key;
+  console.log(jsonData);
   
   updating();
-  get_data();
+  get_data(jsonData);
  
   document.getElementById('close-btn').addEventListener('click', e => {
     remote.getCurrentWindow().close();
@@ -267,7 +278,7 @@ function updateApp() {
 
   function openSettingsWindow() {
         var settingsWindow = new BrowserWindow({
-          height: 580,
+          height: 520,
           width: 380
         });
         settingsWindow.loadURL(url.format({
@@ -276,7 +287,8 @@ function updateApp() {
           slashes: true,
           show: true
     }));
-    settingsWindow.webContents.openDevTools();
+    settingsWindow.setMenu(null);
+    //settingsWindow.webContents.openDevTools();
       settingsWindow.on('close', () => {
         settingsWindowVisible = 0;
       })
@@ -292,5 +304,5 @@ function updateApp() {
   });
 }
 
-ipcRenderer.on('city_name', (event, message) => { console.log(message); });
+//ipcRenderer.on('city_name', (event, message) => { console.log(message); });
 

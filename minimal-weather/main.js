@@ -1,4 +1,5 @@
 const electron = require('electron')
+const fs = require('fs');
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 var mainWindow;
@@ -17,13 +18,29 @@ const { webContents } = require('electron')
 //   console.log(arg);
 //   event.sender.send('reply', 'got it');
 // });
+const ipc = require('electron').ipcMain
 
+ipc.on('update_city', function (event, arg) {
+  // update the settings.json file..
+  let dataToWrite = {
+    "api_key": '48ff1d472cdeee40ccb395bc03863b73',
+    "city_name":arg
+  };
+  let dat = JSON.stringify(dataToWrite);
+  console.log(dat);
+  fs.writeFileSync('./settings.json', dat);
+  mainWindow.webContents.send('update_city', {
+  msg: arg
+  });
+
+})
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 360,
     height: 640,
     frame: false,
     resizable: false,
+    fullscreen :false,
     icon: __dirname + '/app_icon.ico',
     title: "weather"
   });
