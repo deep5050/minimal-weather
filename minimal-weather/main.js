@@ -25,8 +25,8 @@ ipc.on('update_settings', function (event, settingsObj) {
 })
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 360,
-    height: 640,
+    width: 350,
+    height: 600,
     frame: false,
     resizable: false,
     fullscreen :false,
