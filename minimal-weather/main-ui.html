@@ -3,26 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <title>WEATHER</title>
+    <title>MINIMAL-WEATHER</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/animation.css">
-
-    <script src="./app/renderer/main-ui.js"></script>
-    <!-- <script src="./main.js"></script> -->
+    <link rel="stylesheet" href="./css/animation.css">
     <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> -->
 </head>
 
 <body id="body" onload="updateApp()">
-
     <div class="my-card">
         <div class="container-fluid">
             <div class="row">
             </div>
-
             <div class="row">
-
             </div>
             <div class="row mt-1">
                 <div class="col-2 btn" id="close-btn-div">
@@ -30,13 +23,11 @@
                 </div>
 
                 <div class="col-8 text-center time" id="time"></div>
-                <div class="col-2 btn ">
+                <div class="col-2 btn " id="settings">
                     <img style="-webkit-app-region: no-drag;" src="./resources/setting.png" id="settings-btn">
                 </div>
             </div>
         </div>
-
-
 
         <div class="ineer-container text-center ">
             <div class="main-logo" id="main-div">
@@ -56,11 +47,9 @@
         </div>
         <div class="temp-info">
             <div class="city-info">
-<h1 class="city-name txt-center text-capitalize text-nowrap animated bounce" id="city"></h1>
+                <h1 class="city-name txt-center text-capitalize text-nowrap animated bounce" id="city"></h1>
             </div>
         </div>
-
-
 
         <div class="container">
             <div class="row">
@@ -84,26 +73,21 @@
             <div class="others ">TEMPERATURE</div>
             <div class="others" id="hum-text">OTHERS</div>
         </div>
-
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4 mycol" id="wind">
                     <div class="card-style">
-
-                        <img src="./resources/air3.png" alt="" id="img-wind">
+                        <img src="./resources/air3.png" alt="" id="img-wind" class="animated bounceInUp">
                     </div>
                 </div>
                 <div class="col-4 mycol" id="temp">
                     <div class="card-style">
-                        <img src="./resources/temp.png" alt="">
+                        <img src="./resources/temp.png" alt="" class="animated bounceInUp">
                     </div>
                 </div>
                 <div class="col-4 mycol" id="humidity">
                     <div class="card-style">
-
-                        <img src="./resources/extra3.png" alt="">
-
+                        <img src="./resources/extra3.png" alt="" class="animated bounceInUp">
                     </div>
                 </div>
             </div>
@@ -111,20 +95,19 @@
                 <div class="col-4">
                     <div class="max-min text-center">
                         <p id="show-wind">UNKNOWN
-
                         </p>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="max-min text-center">
-<p id="show-max-min " class="animated flash">
+                        <p id="show-max-min" class="animated flash">
                             MAX: N/A</br>MIN: N/A
                         </p>
                     </div>
                 </div>
                 <div class="col-4 ">
                     <div class="max-min text-center">
-<p id="show-humidity" class="animated flash">
+                        <p id="show-humidity" class="animated flash">
                             UNKNOWN
                         </p>
                     </div>
@@ -132,6 +115,7 @@
             </div>
         </div>
     </div>
+    <script src="./app/renderer/main-ui.js"></script>
 </body>
 
 </html>
