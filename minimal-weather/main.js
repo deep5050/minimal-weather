@@ -1,24 +1,14 @@
-const electron = require('electron')
-const fs = require('fs');
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
-var mainWindow;
-
+const { electron, app, BrowserWindow } = require('electron');
+const { webContents } = require('electron');
 const { ipcMain } = require('electron');
-const path = require('path')
-const url = require('url')
+const fs = require('fs');
+const path = require('path');
+const url = require('url');
+const ipc = require('electron').ipcMain;
+let mainWindow;
 let Tray = null;
-const { webContents } = require('electron')
-// console.log(webContents)
-// ipcMain.on('city_name', (event, arg) => { console.log(arg); });
 
 
-// ipcMain.on('set_city_name', (event, arg) => {
-//   console.log("got somtehing from any renderer");
-//   console.log(arg);
-//   event.sender.send('reply', 'got it');
-// });
-const ipc = require('electron').ipcMain
 
 ipc.on('update_city', function (event, arg) {
   // update the settings.json file..
