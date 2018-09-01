@@ -14,9 +14,10 @@ var settingsWindowVisible = 0;
 let settingsWindow;
 var user_city = "";
 var api_key = "";
-ipc.on('update_city', function (event, data) {
+ipc.on('update_settings', function (event, data) {
 
   updateApp();
+  settingsWindow.close();
 });
 
 
@@ -260,10 +261,10 @@ function updateApp() {
   let settingData = fs.readFileSync('settings.json');
   let jsonData = JSON.parse(settingData);
 
-  // read settings.json file here....
-  var user_city = jsonData.user_city;
-  var api_key = jsonData.api_key;
-  console.log(jsonData);
+  // // read settings.json file here....
+   var user_city = jsonData.user_city;
+   var api_key = jsonData.api_key;
+  // console.log(jsonData);
   
   updating();
   get_data(jsonData);
@@ -278,7 +279,7 @@ function updateApp() {
 
   function openSettingsWindow() {
         var settingsWindow = new BrowserWindow({
-          height: 520,
+          height: 530,
           width: 380
         });
         settingsWindow.loadURL(url.format({
@@ -288,8 +289,9 @@ function updateApp() {
           show: true
     }));
     settingsWindow.setMenu(null);
-    //settingsWindow.webContents.openDevTools();
-      settingsWindow.on('close', () => {
+    settingsWindow.webContents.openDevTools();
+    settingsWindow.on('close', () => {
+      settingsWindow = null;
         settingsWindowVisible = 0;
       })
   }

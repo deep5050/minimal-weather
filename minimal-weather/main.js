@@ -10,18 +10,17 @@ let Tray = null;
 
 
 
-ipc.on('update_city', function (event, arg) {
+ipc.on('update_settings', function (event, settingsObj) {
+  console.log(settingsObj);
   // update the settings.json file..
-  let dataToWrite = {
-    "api_key": '48ff1d472cdeee40ccb395bc03863b73',
-    "city_name":arg
-  };
-  let dat = JSON.stringify(dataToWrite);
+  // let dataToWrite = {
+  //   "api_key": settingsObj.api_key,
+  //   "city_name": settingsObj.city_name
+  // };
+  let dat = JSON.stringify(settingsObj);
   console.log(dat);
   fs.writeFileSync('./settings.json', dat);
-  mainWindow.webContents.send('update_city', {
-  msg: arg
-  });
+  mainWindow.webContents.send('update_settings', settingsObj);
 
 })
 function createWindow() {
@@ -57,7 +56,8 @@ app.on('ready', function () {
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
+    mainWindow = null;
   }
 });
 
