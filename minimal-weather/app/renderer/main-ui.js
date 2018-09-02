@@ -69,28 +69,23 @@ var fetched_data = {
   "cod": 'N/A'
 }
 
-
-
-
-
-// ///////////////////////////////////////////
 var is_day;
-function showTime() {
-  var currdate = new Date();
-  var MyFormat = currdate.getHours() + ':' + currdate.getMinutes();
+// function showTime() {
+//   var currdate = new Date();
+//   var MyFormat = currdate.getHours() + ':' + currdate.getMinutes();
 
 
-  if (currdate.getHours() >= 12) {
-    MyFormat = currdate.getHours() + ':' + currdate.getMinutes() + ' PM';
-  } else {
-    MyFormat = currdate.getHours() + ':' + currdate.getMinutes() + ' AM';
-  }
+//   if (currdate.getHours() >= 12) {
+//     MyFormat = currdate.getHours() + ':' + currdate.getMinutes() + ' PM';
+//   } else {
+//     MyFormat = currdate.getHours() + ':' + currdate.getMinutes() + ' AM';
+//   }
   
-  if (currdate.getHours() >= 18) {
-    is_day = 0; // if it is greater than or equals to 6pm it is night (atleast to me) :)
-  }
-  document.getElementById("time").innerHTML = MyFormat;
-}
+//   if (currdate.getHours() >= 18) {
+//     is_day = 0; // if it is greater than or equals to 6pm it is night (atleast to me) :)
+//   }
+//   document.getElementById("time").innerHTML = MyFormat;
+// }
 
 
 function checkTime(i) {
@@ -109,14 +104,6 @@ setInterval(function () {
   m = checkTime(m);
   s = checkTime(s);
 
-  // if (h >= 12 && h <= 23 && m <= 59) {
-  //   MyFormat = (h - 12) + ':' + m + ':' + s + ' PM';
-  // } else if (h >= 0 && h <= 11 && m <= 59) {
-  //   if (h == 0) { h = h + 12 }
-  //   MyFormat = h + ':' + m + ':' + s + ' AM';
-  // }
-
-
     if (h >= 12 && h <= 23 && m <= 59) {
     MyFormat = (h - 12) + ':' + m + ' PM';
   } else if (h >= 0 && h <= 11 && m <= 59) {
@@ -126,19 +113,12 @@ setInterval(function () {
   document.getElementById("time").innerHTML = MyFormat;
 }, 1000);
 
-
-
-
-
-
-
 function kelvin_cel(k) {
   var celsius = Math.round(k - 273.15);
   return celsius;
 }
-///////////////////////////////////////////////
-function error_occured() {
 
+function error_occured() {
   document.getElementById("main-icon").src = "./resources/extra/error.png";
   document.getElementById("temp-val").style.fontSize = "x-large";
   document.getElementById("temp-val").style.color = "white";
@@ -151,14 +131,11 @@ function notfound()
   document.getElementById('temp-val').style.color = "white";
   document.getElementById('temp-val').innerHTML = " CITY NOT FOUND";
 
-  // clear all the other stuffs...
-
-
+  //clear all the other stuffs...   solved issue #6
   document.getElementById("show-wind").innerHTML = 'UNKNOWN';
   document.getElementById("show-max-min").innerHTML = 'UNKNOWN';
-
   document.getElementById("show-wind").innerHTML = 'UNKNOWN';
-
+  document.getElementById("show-humidity").innerHTML = 'UNKNOWN';
 
 
 }
@@ -169,7 +146,6 @@ function updating() {
   document.getElementById("temp-val").style.color = "white";
   document.getElementById("temp-val").innerHTML = "LOADING..";
   document.getElementById("city").innerHTML = "";
-
 }
 
 var logo_id;
@@ -217,20 +193,17 @@ function update_success_content() {
   document.getElementById("show-humidity").innerHTML = 'HUM: '+fetched_data.main.humidity+'</br>'+'CLOUD: '+ fetched_data.clouds.all;
 }
 
-
-
 function test_connection() {
   console.log("test con invoked");
   console.log(req.status + ':' + req.readyState);
 };
-
 
 req.onreadystatechange = function () {
   if (req.readyState == 4 && req.status == 200) {
     fetched_data = JSON.parse(req.responseText);
     if (fetched_data.cod == 200) {
       update_success_content();
-    } //
+    } 
   }
   else if(req.status ==0 && req.readyState == 4){
     console.log("no internet! ");
@@ -239,13 +212,9 @@ req.onreadystatechange = function () {
   else if (req.status == 404 && req.readyState == 4) {
     console.log("city not found");
     notfound();
-
   }else {
-
     console.log(req.status + ':' + req.readyState);
   }
-
-
 };
 
 
@@ -290,7 +259,7 @@ function updateApp() {
 
   function openSettingsWindow() {
         var settingsWindow = new BrowserWindow({
-          height: 530,
+          height: 535,
           width: 380
         });
         settingsWindow.loadURL(url.format({
@@ -300,7 +269,7 @@ function updateApp() {
           show: true
     }));
     settingsWindow.setMenu(null);
-    settingsWindow.webContents.openDevTools();
+    //settingsWindow.webContents.openDevTools();
     settingsWindow.on('close', () => {
       settingsWindow = null;
         settingsWindowVisible = 0;

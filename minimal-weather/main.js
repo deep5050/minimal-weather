@@ -1,13 +1,10 @@
-const { electron, app, BrowserWindow } = require('electron');
-const { webContents } = require('electron');
-const { ipcMain } = require('electron');
+const {app, BrowserWindow } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const ipc = require('electron').ipcMain;
 let mainWindow;
 let Tray = null;
-
 
 
 ipc.on('update_settings', function (event, settingsObj) {
@@ -25,8 +22,8 @@ ipc.on('update_settings', function (event, settingsObj) {
 })
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 350,
-    height: 600,
+    width: 360,
+    height: 630,
     frame: false,
     resizable: false,
     fullscreen :false,
