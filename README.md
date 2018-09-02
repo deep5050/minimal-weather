@@ -28,3 +28,7 @@ Thank You.
 ## Help
 help me to deploy this app for Mac and Linux environment.
 **Windows binary version (.exe) coming soon :)**
+
+## Sources
+1. openweather API (https://openweathermap.org/)
+2. BootStrap4
