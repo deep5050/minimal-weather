@@ -150,6 +150,17 @@ function notfound()
   document.getElementById('main-icon').src = "./resources/extra/not_found.png";
   document.getElementById('temp-val').style.color = "white";
   document.getElementById('temp-val').innerHTML = " CITY NOT FOUND";
+
+  // clear all the other stuffs...
+
+
+  document.getElementById("show-wind").innerHTML = 'UNKNOWN';
+  document.getElementById("show-max-min").innerHTML = 'UNKNOWN';
+
+  document.getElementById("show-wind").innerHTML = 'UNKNOWN';
+
+
+
 }
 
 function updating() {
