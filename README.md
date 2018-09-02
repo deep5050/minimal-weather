@@ -19,9 +19,12 @@ Clone this repository into your local computer then follow these steps...
 ## Build
 Clone the repository and run `npm build` with **electron-packager** installed.
 
-**NOTE:** Make sure you have instaled NodeJs and Electron on your computer.
-You can use your own API key to query (Optional) ,set your home city and enjoy the app.
+## Info
+**NOTE:** Make sure you have installed NodeJs and Electron on your computer.
+You can use your own API key to query (Optional)
+set your home city and enjoy the app.
 Thank You.
 
+## Help
 help me to deploy this app for Mac and Linux environment.
 **Windows binary version (.exe) coming soon :)**
