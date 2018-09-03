@@ -17,7 +17,11 @@ Clone this repository into your local computer then follow these steps...
 3. Enjoy.
 
 ## Build
-Clone the repository and run `npm build` with **electron-packager** installed.
+Clone the repository and run `npm build` with [**electron-packager**](https://github.com/electron-userland/electron-packager "electron-packager repo") installed.
+
+> Run `npm install electron-packager --save-dev` to quick install
+
+> For tutorial on how to package an app check this link [go to this link ](https://www.christianengvall.se/electron-packager-tutorial/)
 
 ## Info
 **NOTE:** Make sure you have installed NodeJs and Electron on your computer.
@@ -30,6 +34,8 @@ help me to package this app for Mac and Linux environment.
 **Windows binary version (.exe) coming soon** :smile:
 
 ## Sources
-1.[openweather](https://openweathermap.org/ "openweather") ==> for providing actual weather data
-2.[bootstrap](https://getbootstrap.com/ "bootstrap")       ==> css library
-3.[flaticon](https://www.flaticon.com/ "flaticon")         ==> for cool icons
+1. [openweather](https://openweathermap.org/ "openweather") ==> for providing actual weather data
+
+2. [bootstrap](https://getbootstrap.com/ "bootstrap")       ==> css library
+
+3. [flaticon](https://www.flaticon.com/ "flaticon")         ==> for cool icons
