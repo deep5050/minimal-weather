@@ -26,10 +26,10 @@ set your home city and enjoy the app.
 Thank You. :smile:
 
 ## Help
-help me to deploy this app for Mac and Linux environment.
-**Windows binary version (.exe) coming soon :)** :smile:
+help me to package this app for Mac and Linux environment.
+**Windows binary version (.exe) coming soon** :smile:
 
 ## Sources
-1. openweather API (https://openweathermap.org/)
-2. BootStrap4
-3. ## thank you
+1.[openweather](https://openweathermap.org/ "openweather") ==> for providing actual weather data
+2.[bootstrap](https://getbootstrap.com/ "bootstrap")       ==> css library
+3.[flaticon](https://www.flaticon.com/ "flaticon")         ==> for cool icons
