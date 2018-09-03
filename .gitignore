@@ -1,0 +1,5 @@
+### ignore all node modules
+minimal-weather/node_modules/*
+## ignore release build folder
+minimal-weather/release-builds/*
+*.txt
