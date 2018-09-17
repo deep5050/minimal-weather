@@ -91,7 +91,7 @@ var is_day;
 function checkTime(i) {
   if (i < 10) {
     i = "0" + i
-  }; // add zero in front of numbers < 10
+  } // add zero in front of numbers < 10
   return i;
 }
 setInterval(function () {
@@ -196,7 +196,7 @@ function update_success_content() {
 function test_connection() {
   console.log("test con invoked");
   console.log(req.status + ':' + req.readyState);
-};
+}
 
 req.onreadystatechange = function () {
   if (req.readyState == 4 && req.status == 200) {
