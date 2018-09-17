@@ -1,4 +1,5 @@
 # minimal-weather
+[![CodeFactor](https://www.codefactor.io/repository/github/deep5050/minimal-weather/badge)](https://www.codefactor.io/repository/github/deep5050/minimal-weather)
 ### A minimalistic but smart weather app made with electron API
 
 ## default screen
