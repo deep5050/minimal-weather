@@ -36,9 +36,7 @@ help me to package this app for Mac and Linux environment.
 
 ## Sources
 1. [openweather](https://openweathermap.org/ "openweather") ==> for providing actual weather data
-
 2. [bootstrap](https://getbootstrap.com/ "bootstrap")       ==> css library
-
 3. [flaticon](https://www.flaticon.com/ "flaticon")         ==> for cool icons
 
 ## Lisence
@@ -65,5 +63,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ##DONATE
-If this project helps you in any way making your life easier, you can buy me a coffee. :smile:
-[paypal](paypal.me/deep5050)
+If this project helps you in any way making your life easier, you can buy me a :coffee: .
+<p align="center">  
+  <a href="https://www.paypal.me/deep5050" alt="Paypal"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a>
+</p>
