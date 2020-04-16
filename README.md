@@ -62,7 +62,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-##DONATE
+## DONATE
 If this project helps you in any way making your life easier, you can buy me a :coffee: .
 <p align="center">  
   <a href="https://www.paypal.me/deep5050" alt="Paypal"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a>
