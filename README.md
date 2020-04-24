@@ -1,4 +1,7 @@
+
 # minimal-weather
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep5050/minimal-weather) 
+
 [![CodeFactor](https://www.codefactor.io/repository/github/deep5050/minimal-weather/badge)](https://www.codefactor.io/repository/github/deep5050/minimal-weather)
 ### A minimalistic but smart weather app made with electron API
 
