@@ -1,8 +1,10 @@
 
 # minimal-weather
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep5050/minimal-weather) 
 
-[![CodeFactor](https://www.codefactor.io/repository/github/deep5050/minimal-weather/badge)](https://www.codefactor.io/repository/github/deep5050/minimal-weather)
+[![HitCount](http://hits.dwyl.com/deep5050/minimal-weather.svg)](http://hits.dwyl.com/deep5050/minimal-weather)
+![DepFu](https://img.shields.io/depfu/deep5050/minimal-weather?style=flat-square)
+![MIT](https://img.shields.io/github/license/deep5050/minimal-weather?style=flat-square)
+
 ### A minimalistic but smart weather app made with electron API
 
 ## default screen
