@@ -7,6 +7,7 @@
 ## Default screen
 
 ![screenshot 288](https://user-images.githubusercontent.com/27947066/44948700-ef8d7d00-ae3f-11e8-98ee-76cca26d48c6.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeep5050%2Fminimal-weather.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeep5050%2Fminimal-weather?ref=badge_shield)
 
 ## After changing the city
 
@@ -81,3 +82,7 @@ If this project helps you in any way making your life easier, you can buy me a :
 <p align="center">  
   <a href="https://www.paypal.me/deep5050" alt="Paypal"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a>
 </p>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeep5050%2Fminimal-weather.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeep5050%2Fminimal-weather?ref=badge_large)
