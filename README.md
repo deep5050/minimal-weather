@@ -1,6 +1,6 @@
 <div align="center">
-<p align="center"> <a href="https://github.com/deep5050/minimal-weather"><img src="https://i.imgur.com/IgEQqmi.png" title="Minimal Weather"/></a> </p>  
- 
+<p align="center"> <a href="https://github.com/deep5050/minimal-weather"><img src="https://i.imgur.com/IgEQqmi.png" title="Minimal Weather"/></a> </p>
+
  <p align="center"> <h4 align="center">A Minimal But Smart Weather App Made With Electron API</h4></p>
 </div>
 
@@ -87,7 +87,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 If this project helps you in any way making your life easier, you can buy me a
 :coffee: .
 
-<p align="center">  
+<p align="center">
   <a href="https://www.paypal.me/deep5050" alt="Paypal"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" /></a>
 </p>
 
